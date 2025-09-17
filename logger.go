@@ -48,6 +48,11 @@ type Logger struct {
 	// The default values for log levels are: info, warn, error, and debug
 	level string
 
+	// LocalTime determines if the time used for formatting the timestamps in
+	// backup files is the computer's local time.  The default is to use UTC
+	// time.
+	localTime bool
+
 	once *sync.Once
 	Log  *zap.Logger
 }
@@ -60,6 +65,7 @@ func newDefaultLogger() *Logger {
 		maxAge:    30,
 		compress:  false,
 		level:     INFO,
+		localTime: true,
 		once:      new(sync.Once),
 	}
 }
@@ -93,6 +99,7 @@ func (l *Logger) getWriter() zapcore.WriteSyncer {
 			MaxBackups: l.maxBackup,
 			MaxAge:     l.maxAge,
 			Compress:   l.compress,
+			LocalTime:  l.localTime,
 		}),
 	)
 }

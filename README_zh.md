@@ -1,10 +1,10 @@
-# logger
-[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/logger)
+# l
+[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/l)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [English](README.md)
 
-# logger 日志包
+# l 日志包
 
 一个基于 [Uber zap](https://github.com/uber-go/zap) 和 [lumberjack](https://github.com/natefinch/lumberjack) 的高性能日志库，支持日志切割、压缩、结构化日志输出、可配置项丰富，适用于生产环境。
 
@@ -20,7 +20,7 @@
 ## 安装
 
 ```bash
-go get github.com/gin-generator/logger
+go get github.com/gin-generator/l
 ```
 
 ## 常用方法
@@ -32,6 +32,7 @@ go get github.com/gin-generator/logger
 ## 使用
 ### 示例
 [测试用例](logger_test.go)
+[自定义Gorm logger](gorm_test.go)
 
 ## License
 MIT © [Chaozheng Qin](LICENSE)

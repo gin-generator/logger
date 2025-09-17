@@ -1,10 +1,13 @@
-# logger
-[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/logger)
+# l
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/l)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [中文](README_zh.md)
 
-A customizable, production-ready logging package based on [Uber's zap](https://github.com/uber-go/zap) and [lumberjack](https://github.com/natefinch/lumberjack). This package supports log rotation, JSON formatting, structured logging, and various log levels with minimal setup.
+A customizable, production-ready logging package based on [Uber's zap](https://github.com/uber-go/zap)
+and [lumberjack](https://github.com/natefinch/lumberjack). This package supports log rotation, JSON formatting,
+structured logging, and various log levels with minimal setup.
 
 ## Features
 
@@ -17,18 +20,23 @@ A customizable, production-ready logging package based on [Uber's zap](https://g
 ## Installation
 
 ```bash
-go get github.com/gin-generator/logger
+go get github.com/gin-generator/l
 ```
 
 ## Utility Methods
+
 * Dump(interface{}, ...string) – Quick debug print using json.Marshal
 * LogIf(error) – Logs an error if not nil
 * DebugString, InfoString, WarnString, ErrorString, FatalString
 * DebugJSON, InfoJSON, WarnJSON, ErrorJSON, FatalJSON
 
 ## Usage
+
 ### Example
+
 [Test case](logger_test.go)
+[Custom gorm logger](gorm_test.go)
 
 ## License
+
 MIT © [Chaozheng Qin](LICENSE)

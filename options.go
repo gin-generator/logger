@@ -56,3 +56,9 @@ func WithLevel(level string) Option {
 		l.level = level
 	})
 }
+
+func WithTimeZone(localTime bool) Option {
+	return optionFunc(func(l *Logger) {
+		l.localTime = localTime
+	})
+}
