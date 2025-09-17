@@ -1,10 +1,10 @@
-# l
-[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/l)
+# logger
+[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/logger)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [English](README.md)
 
-# l 日志包
+# 日志包
 
 一个基于 [Uber zap](https://github.com/uber-go/zap) 和 [lumberjack](https://github.com/natefinch/lumberjack) 的高性能日志库，支持日志切割、压缩、结构化日志输出、可配置项丰富，适用于生产环境。
 
@@ -20,7 +20,7 @@
 ## 安装
 
 ```bash
-go get github.com/gin-generator/l
+go get github.com/gin-generator/logger
 ```
 
 ## 常用方法

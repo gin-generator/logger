@@ -1,6 +1,6 @@
-# l
+# logger
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/l)
+[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/logger)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [中文](README_zh.md)
@@ -20,7 +20,7 @@ structured logging, and various log levels with minimal setup.
 ## Installation
 
 ```bash
-go get github.com/gin-generator/l
+go get github.com/gin-generator/logger
 ```
 
 ## Utility Methods
