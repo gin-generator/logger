@@ -64,7 +64,7 @@ func newDefaultLogger() *Logger {
 		maxBackup: 7,
 		maxAge:    30,
 		compress:  false,
-		level:     INFO,
+		level:     ERROR,
 		localTime: true,
 		once:      new(sync.Once),
 	}
