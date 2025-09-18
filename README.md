@@ -1,6 +1,6 @@
 # logger
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/yourrepository.svg)](https://pkg.go.dev/github.com/gin-generator/logger)
+[![Go Reference](https://img.shields.io/github/v/release/gin-generator/logger.svg?style=flat-square)](https://pkg.go.dev/github.com/gin-generator/logger)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [中文](README_zh.md)
