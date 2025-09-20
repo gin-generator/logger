@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"os"
+	"path/filepath"
 	"strings"
 	"sync"
 	"time"
@@ -88,8 +89,10 @@ func (l *Logger) custom() {
 }
 
 func (l *Logger) getWriter() zapcore.WriteSyncer {
-	logName := time.Now().Format("logs-2006-01-02.log")
-	filename := strings.ReplaceAll(l.fileName, "logs.log", logName)
+	base := filepath.Base(l.fileName)
+	temp := strings.TrimSuffix(base, filepath.Ext(l.fileName))
+	logName := time.Now().Format(temp + "-2006-01-02.log")
+	filename := strings.ReplaceAll(l.fileName, base, logName)
 
 	return zapcore.NewMultiWriteSyncer(
 		zapcore.AddSync(os.Stdout),
