@@ -1,0 +1,6 @@
+{"level":"debug","time":"2026-05-08 13:55:20","caller":"testing/testing.go:1934","message":"debug message"}
+{"level":"info","time":"2026-05-08 13:55:20","caller":"testing/testing.go:1934","message":"info message"}
+{"level":"debug","time":"2026-05-08 14:08:43","caller":"logger/logger_test.go:69","message":"test info with trace: value","trace_id":"trace-gorm-123"}
+{"level":"warn","time":"2026-05-08 14:08:43","caller":"logger/logger_test.go:70","message":"test warn with trace","trace_id":"trace-gorm-123"}
+{"level":"error","time":"2026-05-08 14:08:43","caller":"logger/logger_test.go:71","message":"test error with trace","trace_id":"trace-gorm-123"}
+{"level":"debug","time":"2026-05-08 14:08:43","caller":"logger/logger_test.go:72","message":"gorm","trace_id":"trace-gorm-123","sql":"SELECT * FROM users WHERE id = 1","elapsed":0.000000187,"rows":1}
