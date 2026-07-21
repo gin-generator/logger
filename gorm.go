@@ -5,6 +5,7 @@ import (
 	"errors"
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 	"time"
 
@@ -61,7 +62,7 @@ func (l *GormLogger) Trace(ctx context.Context, begin time.Time, fc func() (stri
 
 	fields := []zap.Field{
 		zap.String("sql", sql),
-		zap.Duration("elapsed", elapsed),
+		zap.String("elapsed", strconv.FormatFloat(float64(elapsed)/float64(time.Millisecond), 'f', 3, 64)+"ms"),
 		zap.Int64("rows", rows),
 	}
 

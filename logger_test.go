@@ -2,6 +2,7 @@ package logger
 
 import (
 	"context"
+	"strings"
 	"testing"
 	"time"
 
@@ -90,5 +91,9 @@ func TestGormLoggerWithTraceID(t *testing.T) {
 		if traceID, ok := entry.ContextMap()["trace_id"]; !ok || traceID != "trace-gorm-123" {
 			t.Fatalf("expected trace_id on %q, got %#v", entry.Message, entry.ContextMap())
 		}
+	}
+	elapsed, ok := entries[3].ContextMap()["elapsed"].(string)
+	if !ok || !strings.HasSuffix(elapsed, "ms") {
+		t.Fatalf("expected elapsed in milliseconds, got %#v", entries[3].ContextMap()["elapsed"])
 	}
 }
