@@ -73,10 +73,10 @@ log := logger.New(
 
 ### 通过 context 透传 Trace ID
 
-在 context 中设置 `logger.TraceIDKey`，调用 `WithContext` 后，每条日志都会自动附带 Trace ID。
+使用 `logger.WithTraceID` 写入 context，调用 `WithContext` 后，每条日志都会自动附带 Trace ID。
 
 ```go
-ctx := context.WithValue(req.Context(), logger.TraceIDKey, "abc-123")
+ctx := logger.WithTraceID(req.Context(), "abc-123")
 log.WithContext(ctx).Info("收到请求", zap.String("path", "/api/users"))
 // 输出：{"level":"info","message":"收到请求","trace_id":"abc-123","path":"/api/users",...}
 ```

@@ -7,6 +7,7 @@ import (
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+	"go.uber.org/zap/zaptest/observer"
 )
 
 func TestNew(t *testing.T) {
@@ -37,9 +38,19 @@ func TestWithRotation(t *testing.T) {
 
 func TestWithContext(t *testing.T) {
 	log := New()
-	ctx := context.WithValue(context.Background(), TraceIDKey, "trace-123")
+	ctx := WithTraceID(context.Background(), "trace-123")
 
 	log.WithContext(ctx).Info("test with trace id")
+}
+
+func TestTraceIDFromContext(t *testing.T) {
+	ctx := WithTraceID(context.Background(), "trace-123")
+	if traceID := TraceIDFromContext(ctx); traceID != "trace-123" {
+		t.Fatalf("expected trace-123, got %q", traceID)
+	}
+	if traceID := TraceIDFromContext(nil); traceID != "" {
+		t.Fatalf("expected empty trace ID, got %q", traceID)
+	}
 }
 
 func TestWithLevelValue(t *testing.T) {
@@ -59,17 +70,25 @@ func TestGormLogger(t *testing.T) {
 }
 
 func TestGormLoggerWithTraceID(t *testing.T) {
-	log := New(
-		WithLevel("debug"),
-		WithFile("logs/test.log"),
-	)
+	core, observed := observer.New(zapcore.DebugLevel)
+	log := &Logger{Logger: zap.New(core)}
 	gormLog := NewGormLogger(log, 100*time.Millisecond)
 
-	ctx := context.WithValue(context.Background(), TraceIDKey, "trace-gorm-123")
+	ctx := WithTraceID(context.Background(), "trace-gorm-123")
 	gormLog.Info(ctx, "test info with trace: %s", "value")
 	gormLog.Warn(ctx, "test warn with trace")
 	gormLog.Error(ctx, "test error with trace")
 	gormLog.Trace(ctx, time.Now(), func() (string, int64) {
 		return "SELECT * FROM users WHERE id = 1", 1
 	}, nil)
+
+	entries := observed.All()
+	if len(entries) != 4 {
+		t.Fatalf("expected 4 log entries, got %d", len(entries))
+	}
+	for _, entry := range entries {
+		if traceID, ok := entry.ContextMap()["trace_id"]; !ok || traceID != "trace-gorm-123" {
+			t.Fatalf("expected trace_id on %q, got %#v", entry.Message, entry.ContextMap())
+		}
+	}
 }

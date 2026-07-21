@@ -73,10 +73,10 @@ log := logger.New(
 
 ### Trace ID via context
 
-Set `logger.TraceIDKey` in the context and call `WithContext` to attach the trace ID to every log entry automatically.
+Use `logger.WithTraceID` and call `WithContext` to attach the trace ID to every log entry automatically.
 
 ```go
-ctx := context.WithValue(req.Context(), logger.TraceIDKey, "abc-123")
+ctx := logger.WithTraceID(req.Context(), "abc-123")
 log.WithContext(ctx).Info("request received", zap.String("path", "/api/users"))
 // Output: {"level":"info","message":"request received","trace_id":"abc-123","path":"/api/users",...}
 ```

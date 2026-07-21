@@ -25,7 +25,7 @@ type config struct {
 }
 
 // TraceIDKey is the context key used to store and retrieve trace IDs.
-const TraceIDKey = "trace_id"
+const TraceIDKey = "X-Trace-Id"
 
 // defaultConfig returns a config with sensible defaults.
 func defaultConfig() *config {
